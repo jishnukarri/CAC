@@ -3,13 +3,13 @@
 curl --ssl-no-revoke https://raw.githubusercontent.com/jishnukarri/CAC/master/hosts.txt > hosts.txt 2> nul
 set title=echo Arma 3 CAC Launcher - discord.gg/dNGcyEYK8F
 set EXE=steam.exe
-if not exist "CACCore1" md "CACCore1"
-if not exist CACCore1\memory2.txt echo set Status=DISABLED > CACCore1\memory2.txt
-for /f "usebackq delims=" %%A in (CACCore1\memory2.txt) do %%A
+if not exist "CACCore" md "CACCore"
+if not exist CACCore\memory2.txt echo set Status=DISABLED > CACCore\memory2.txt
+for /f "usebackq delims=" %%A in (CACCore\memory2.txt) do %%A
 FOR /F %%x IN ('tasklist /NH /FI "IMAGENAME eq %EXE%"') DO IF %%x == %EXE% goto READY
 :LOAD
 if exist "C:\Program Files (x86)\Steam\steam.exe" goto DEFAULT
-if exist "CACCore1\memory.txt" goto CUSTOM
+if exist "CACCore\memory.txt" goto CUSTOM
 color 6
 echo.
 echo SEARCHING FOR STEAM DIRECTORY, PLEASE WAIT
@@ -17,14 +17,14 @@ echo SEARCHING FOR STEAM DIRECTORY, PLEASE WAIT
    for %%a in ( a b c d e f g h i j k l m n o p q r s t u v w x y z ) do (
       if exist "%%a:\" dir "%%a:\Steam.exe" /b /s /a-d 2> nul
    )
-)>CACCore1\memory.txt
+)>CACCore\memory.txt
 cls
-set /p SteamPath=<CACCore1\memory.txt
+set /p SteamPath=<CACCore\memory.txt
 if not exist "%SteamPath%" goto FINDFAIL
 color 2
 echo.
 echo STEAM FOUND AT
-type CACCore1\memory.txt
+type CACCore\memory.txt
 timeout /t 3
 goto CUSTOM
 
@@ -39,13 +39,13 @@ FOR /F %%x IN ('tasklist /NH /FI "IMAGENAME eq %EXE%"') DO IF %%x == %EXE% goto 
 goto FAIL
 
 :CUSTOM
-set /p SteamPath=<CACCore1\memory.txt
-if not exist "%SteamPath%" del CACCore1\memory.txt & goto RESTART
+set /p SteamPath=<CACCore\memory.txt
+if not exist "%SteamPath%" del CACCore\memory.txt & goto RESTART
 cls
 color 6
 echo.
 echo STEAM IS NOT RUNNING, ATTEMPTING TO RUN STEAM
-set /p SteamPath=<CACCore1\memory.txt
+set /p SteamPath=<CACCore\memory.txt
 start "" "%SteamPath%" -silent
 cls
 FOR /F %%x IN ('tasklist /NH /FI "IMAGENAME eq %EXE%"') DO IF %%x == %EXE% goto READY2
@@ -60,7 +60,7 @@ timeout /t 3
 goto LOAD
 
 :FINDFAIL
-if exist "CACCore1\memory.txt" del /Q "CACCore1\memory.txt"
+if exist "CACCore\memory.txt" del /Q "CACCore\memory.txt"
 cls
 echo.
 echo FAILED TO FIND STEAM
@@ -75,9 +75,9 @@ IF ERRORLEVEL 1 GOTO MANUAL
 cls
 echo. & echo Please enter path of your steam.exe. (Example: "C:\Steam.exe") & echo.
 set /p UserInput=Steam Directory: (Please use "" brackets): 
-(echo=%UserInput%) > "CACCore1\memory.txt"
-set /p SteamPath=<CACCore1\memory.txt
-if not exist "%SteamPath%" type CACCore1\memory.txt & echo DOES NOT EXIST
+(echo=%UserInput%) > "CACCore\memory.txt"
+set /p SteamPath=<CACCore\memory.txt
+if not exist "%SteamPath%" type CACCore\memory.txt & echo DOES NOT EXIST
 goto RESTART
 
 :READY2
@@ -99,12 +99,12 @@ echo STEAM IS RUNNING
 goto START
 
 :START
-if not exist CACCore1\username.txt echo %username%>CACCore1\username.txt
-if exist CACCore1\password.txt set /p Password=<CACCore1\password.txt
-if exist CACCore1\moddir.txt set /p ModPath=<CACCore1\moddir.txt
-if not exist CACCore1\moddir.txt set ModPath=Mods
+if not exist CACCore\username.txt echo %username%>CACCore\username.txt
+if exist CACCore\password.txt set /p Password=<CACCore\password.txt
+if exist CACCore\moddir.txt set /p ModPath=<CACCore\moddir.txt
+if not exist CACCore\moddir.txt set ModPath=Mods
 set ModPath=%ModPath%\
-set /p ArmaUserName=<CACCore1\username.txt
+set /p ArmaUserName=<CACCore\username.txt
 set ip=cacservers.ddns.net
 set ip2=cacservers.servebeer.com
 set ip3=cackoth.servebeer.com
@@ -117,19 +117,19 @@ set A4=start "" /normal arma3_x64 -skipIntro -noSplash -world=empty -exThreads=7
 set A5=start "" /normal arma3_x64 -skipIntro -noSplash -world=empty -exThreads=7 -enableHT -setThreadCharacteristics -connect=%ip5% -name="%ArmaUserName%"
 
 :MODPRELOADER
-if not exist CACCore1\@ARM.txt echo DISABLED > CACCore1\@ARM.txt
-if not exist CACCore1\@JSRS_SOUNDMOD.txt echo DISABLED > CACCore1\@JSRS_SOUNDMOD.txt
-if not exist CACCore1\@DUI.txt echo DISABLED > CACCore1\@DUI.txt
-if not exist CACCore1\@Blastcore.txt echo DISABLED > CACCore1\@Blastcore.txt
-if not exist CACCore1\@VanillaSmokeForBlastcore.txt echo DISABLED > CACCore1\@VanillaSmokeForBlastcore.txt
-if not exist CACCore1\@BetterInventory.txt echo DISABLED > CACCore1\@BetterInventory.txt
+if not exist CACCore\@ARM.txt echo DISABLED > CACCore\@ARM.txt
+if not exist CACCore\@JSRS_SOUNDMOD.txt echo DISABLED > CACCore\@JSRS_SOUNDMOD.txt
+if not exist CACCore\@DUI.txt echo DISABLED > CACCore\@DUI.txt
+if not exist CACCore\@Blastcore.txt echo DISABLED > CACCore\@Blastcore.txt
+if not exist CACCore\@VanillaSmokeForBlastcore.txt echo DISABLED > CACCore\@VanillaSmokeForBlastcore.txt
+if not exist CACCore\@BetterInventory.txt echo DISABLED > CACCore\@BetterInventory.txt
 
-set /p @ARM=<CACCore1\@ARM.txt
-set /p @JSRS_SOUNDMOD=<CACCore1\@JSRS_SOUNDMOD.txt
-set /p @DUI=<CACCore1\@DUI.txt
-set /p @Blastcore=<CACCore1\@Blastcore.txt
-set /p @VanillaSmokeForBlastcore=<CACCore1\@VanillaSmokeForBlastcore.txt
-set /p @BetterInventory=<CACCore1\@BetterInventory.txt
+set /p @ARM=<CACCore\@ARM.txt
+set /p @JSRS_SOUNDMOD=<CACCore\@JSRS_SOUNDMOD.txt
+set /p @DUI=<CACCore\@DUI.txt
+set /p @Blastcore=<CACCore\@Blastcore.txt
+set /p @VanillaSmokeForBlastcore=<CACCore\@VanillaSmokeForBlastcore.txt
+set /p @BetterInventory=<CACCore\@BetterInventory.txt
 
 if %@ARM%==ENABLED set o1=;%ModPath%@ARM
 if %@ARM%==DISABLED set o1=
@@ -313,15 +313,15 @@ IF ERRORLEVEL 2 GOTO MODDISABLE
 IF ERRORLEVEL 1 GOTO MODENABLE
 
 :MODENABLE
-if exist CACCore1\memory2.txt del CACCore1\memory2.txt
->>CACCore1\memory2.txt Echo set Status=ENABLED
+if exist CACCore\memory2.txt del CACCore\memory2.txt
+>>CACCore\memory2.txt Echo set Status=ENABLED
 set Status=ENABLED
 cls
 goto StatusChanger
 
 :MODDISABLE
-if exist CACCore1\memory2.txt del CACCore1\memory2.txt
->>CACCore1\memory2.txt Echo set Status=DISABLED
+if exist CACCore\memory2.txt del CACCore\memory2.txt
+>>CACCore\memory2.txt Echo set Status=DISABLED
 set Status=DISABLED
 cls
 goto StatusChanger
@@ -356,45 +356,45 @@ timeout /t 2
 GOTO ModSettings
 
 :ARM
-set /p ModPath=<CACCore1\@ARM.txt
-if %ModPath%==DISABLED del CACCore1\@ARM.txt & echo ENABLED > CACCore1\@ARM.txt
-if %ModPath%==ENABLED del CACCore1\@ARM.txt & echo DISABLED > CACCore1\@ARM.txt
-set /p @ARM=<CACCore1\@ARM.txt
+set /p ModPath=<CACCore\@ARM.txt
+if %ModPath%==DISABLED del CACCore\@ARM.txt & echo ENABLED > CACCore\@ARM.txt
+if %ModPath%==ENABLED del CACCore\@ARM.txt & echo DISABLED > CACCore\@ARM.txt
+set /p @ARM=<CACCore\@ARM.txt
 goto ModSettings
 
 :JSRS_SOUNDMOD
-set /p ModPath=<CACCore1\@JSRS_SOUNDMOD.txt
-if %ModPath%==DISABLED del CACCore1\@JSRS_SOUNDMOD.txt & echo ENABLED > CACCore1\@JSRS_SOUNDMOD.txt
-if %ModPath%==ENABLED del CACCore1\@JSRS_SOUNDMOD.txt & echo DISABLED > CACCore1\@JSRS_SOUNDMOD.txt
-set /p @JSRS_SOUNDMOD=<CACCore1\@JSRS_SOUNDMOD.txt
+set /p ModPath=<CACCore\@JSRS_SOUNDMOD.txt
+if %ModPath%==DISABLED del CACCore\@JSRS_SOUNDMOD.txt & echo ENABLED > CACCore\@JSRS_SOUNDMOD.txt
+if %ModPath%==ENABLED del CACCore\@JSRS_SOUNDMOD.txt & echo DISABLED > CACCore\@JSRS_SOUNDMOD.txt
+set /p @JSRS_SOUNDMOD=<CACCore\@JSRS_SOUNDMOD.txt
 goto ModSettings
 
 :DUI
-set /p ModPath=<CACCore1\@DUI.txt
-if %ModPath%==DISABLED del CACCore1\@DUI.txt & echo ENABLED > CACCore1\@DUI.txt
-if %ModPath%==ENABLED del CACCore1\@DUI.txt & echo DISABLED > CACCore1\@DUI.txt
-set /p @DUI=<CACCore1\@DUI.txt
+set /p ModPath=<CACCore\@DUI.txt
+if %ModPath%==DISABLED del CACCore\@DUI.txt & echo ENABLED > CACCore\@DUI.txt
+if %ModPath%==ENABLED del CACCore\@DUI.txt & echo DISABLED > CACCore\@DUI.txt
+set /p @DUI=<CACCore\@DUI.txt
 goto ModSettings
 
 :Blastcore
-set /p ModPath=<CACCore1\@Blastcore.txt
-if %ModPath%==DISABLED del CACCore1\@Blastcore.txt & echo ENABLED > CACCore1\@Blastcore.txt
-if %ModPath%==ENABLED del CACCore1\@Blastcore.txt & echo DISABLED > CACCore1\@Blastcore.txt
-set /p @Blastcore=<CACCore1\@Blastcore.txt
+set /p ModPath=<CACCore\@Blastcore.txt
+if %ModPath%==DISABLED del CACCore\@Blastcore.txt & echo ENABLED > CACCore\@Blastcore.txt
+if %ModPath%==ENABLED del CACCore\@Blastcore.txt & echo DISABLED > CACCore\@Blastcore.txt
+set /p @Blastcore=<CACCore\@Blastcore.txt
 goto ModSettings
 
 :VanillaSmokeForBlastcore
-set /p ModPath=<CACCore1\@VanillaSmokeForBlastcore.txt
-if %ModPath%==DISABLED del CACCore1\@VanillaSmokeForBlastcore.txt & echo ENABLED > CACCore1\@VanillaSmokeForBlastcore.txt
-if %ModPath%==ENABLED del CACCore1\@VanillaSmokeForBlastcore.txt & echo DISABLED > CACCore1\@VanillaSmokeForBlastcore.txt
-set /p @VanillaSmokeForBlastcore=<CACCore1\@VanillaSmokeForBlastcore.txt
+set /p ModPath=<CACCore\@VanillaSmokeForBlastcore.txt
+if %ModPath%==DISABLED del CACCore\@VanillaSmokeForBlastcore.txt & echo ENABLED > CACCore\@VanillaSmokeForBlastcore.txt
+if %ModPath%==ENABLED del CACCore\@VanillaSmokeForBlastcore.txt & echo DISABLED > CACCore\@VanillaSmokeForBlastcore.txt
+set /p @VanillaSmokeForBlastcore=<CACCore\@VanillaSmokeForBlastcore.txt
 goto ModSettings
 
 :BetterInventory
-set /p ModPath=<CACCore1\@BetterInventory.txt
-if %ModPath%==DISABLED del CACCore1\@BetterInventory.txt & echo ENABLED > CACCore1\@BetterInventory.txt
-if %ModPath%==ENABLED del CACCore1\@BetterInventory.txt & echo DISABLED > CACCore1\@BetterInventory.txt
-set /p @BetterInventory=<CACCore1\@BetterInventory.txt
+set /p ModPath=<CACCore\@BetterInventory.txt
+if %ModPath%==DISABLED del CACCore\@BetterInventory.txt & echo ENABLED > CACCore\@BetterInventory.txt
+if %ModPath%==ENABLED del CACCore\@BetterInventory.txt & echo DISABLED > CACCore\@BetterInventory.txt
+set /p @BetterInventory=<CACCore\@BetterInventory.txt
 goto ModSettings
 
 :UserCtl
@@ -432,12 +432,12 @@ choice /C 123 /M "->"
 IF %ERRORLEVEL% EQU 3 GOTO CACSETTINGS
 IF %ERRORLEVEL% EQU 2 set ArmaUserName=%username%
 IF %ERRORLEVEL% EQU 1 set /p ArmaUserName="Username: "
-echo %ArmaUserName%>CACCore1\username.txt
+echo %ArmaUserName%>CACCore\username.txt
 GOTO UserCtl
 
 :MODCHECK
-curl --ssl-no-revoke https://raw.githubusercontent.com/TanRayCz/CAC/master/modcheck.bat > CACCore1\modcheck.bat 2> nul
-call CACCore1\modcheck.bat
+curl --ssl-no-revoke https://raw.githubusercontent.com/TanRayCz/CAC/master/modcheck.bat > CACCore\modcheck.bat 2> nul
+call CACCore\modcheck.bat
 
 :CACSETTINGS
 cls 
@@ -465,10 +465,10 @@ color 2
 echo.
 echo  Change Mod Directory
 echo.
-if exist CACCore1\moddir.txt set /p ModPath=<CACCore1\moddir.txt
-if exist CACCore1\moddir.txt echo   Current Directory: %ModPath%
-if not exist CACCore1\moddir.txt set ModPath=Mods\
-if not exist CACCore1\moddir.txt echo   Current Mod Directory: Default (%ModPath%)
+if exist CACCore\moddir.txt set /p ModPath=<CACCore\moddir.txt
+if exist CACCore\moddir.txt echo   Current Directory: %ModPath%
+if not exist CACCore\moddir.txt set ModPath=Mods\
+if not exist CACCore\moddir.txt echo   Current Mod Directory: Default (%ModPath%)
 
 echo.
 echo  1 Change Directory
@@ -482,10 +482,10 @@ IF ERRORLEVEL 1 GOTO MODDIR_CHANGE
 
 :MODDIR_CHANGE
 set /p ModPath="New Mod Directory: "
-echo %ModPath%>CACCore1\moddir.txt
+echo %ModPath%>CACCore\moddir.txt
 goto MODDIRCHANGER
 :MODDIR_DELETE
-del CACCore1\moddir.txt
+del CACCore\moddir.txt
 set ModPath=
 GOTO MODDIRCHANGER
 
@@ -497,9 +497,9 @@ color 4
 echo.
 echo  Manage password for CAC Exile servers
 echo.
-if exist CACCore1\password.txt set /p Password=<CACCore1\password.txt
-if exist CACCore1\password.txt echo   Current Password: %Password%
-if not exist CACCore1\password.txt echo   Current Password: None
+if exist CACCore\password.txt set /p Password=<CACCore\password.txt
+if exist CACCore\password.txt echo   Current Password: %Password%
+if not exist CACCore\password.txt echo   Current Password: None
 echo.
 echo  1 Change Password
 echo  2 Remove Password
@@ -512,16 +512,16 @@ IF ERRORLEVEL 1 GOTO PASSWORDMANAGER_ADD
 
 :PASSWORDMANAGER_ADD
 set /p Password="Password: "
-echo %Password%>CACCore1\password.txt
+echo %Password%>CACCore\password.txt
 goto PASSWORDMANAGER
 :PASSWORDMANAGER_DELETE
-del CACCore1\password.txt
+del CACCore\password.txt
 set Password=
 GOTO PASSWORDMANAGER
 
 :End
 cls
-curl --ssl-no-revoke https://raw.githubusercontent.com/TanRayCz/CAC/master/logo.txt > CACCore1\logo.txt 2> nul
-type CACCore1\logo.txt
+curl --ssl-no-revoke https://raw.githubusercontent.com/TanRayCz/CAC/master/logo.txt > CACCore\logo.txt 2> nul
+type CACCore\logo.txt
 timeout 3 > nul
 exit
