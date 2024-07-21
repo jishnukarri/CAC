@@ -3,7 +3,7 @@
 curl --ssl-no-revoke https://raw.githubusercontent.com/jishnukarri/CAC/master/hosts.txt > hosts.txt 2> nul
 set title=echo Arma 3 CAC Launcher - discord.gg/dNGcyEYK8F
 set EXE=steam.exe
-if not exist "CACCore" md "CACCore"
+if not exist "CACCore1" md "CACCore1"
 if not exist CACCore1\memory2.txt echo set Status=DISABLED > CACCore1\memory2.txt
 for /f "usebackq delims=" %%A in (CACCore1\memory2.txt) do %%A
 FOR /F %%x IN ('tasklist /NH /FI "IMAGENAME eq %EXE%"') DO IF %%x == %EXE% goto READY
