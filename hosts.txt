@@ -7,3 +7,5 @@ cacservers.ddns.net:3502
 unladencoconut.ddns.net:3302
 cacservers.servebeer.com:2372
 cacservers.servebeer.com:2322
+cac-specialops.duckdns.org:2100
+cac-specialops.duckdns.org:20100
