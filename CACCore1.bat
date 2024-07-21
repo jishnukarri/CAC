@@ -1,6 +1,6 @@
 @echo off
 :RESTART
-curl --ssl-no-revoke https://raw.githubusercontent.com/TanRayCz/CAC/master/hosts.txt > hosts.txt 2> nul
+curl --ssl-no-revoke https://raw.githubusercontent.com/jishnukarri/CAC/master/hosts.txt > hosts.txt 2> nul
 set title=echo Arma 3 CAC Launcher - discord.gg/dNGcyEYK8F
 set EXE=steam.exe
 if not exist "CACCore" md "CACCore"
