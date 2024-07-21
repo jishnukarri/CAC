@@ -191,7 +191,7 @@ IF ERRORLEVEL 1 GOTO Antistasi1
 :: KP LIB/SPECOPS START
 
 :KPLib
-set KPLib =-mod=%ModPath%@ace;%ModPath%@CBA_A3;%ModPath%@RHSAFRF;%ModPath%@RHSGREF;%ModPath%@RHSUSAF;%ModPath%@AWR;%ModPath%@RealEngine;%ModPath%@EnhancedMovement;%ModPath%@EnhancedMovementRework;%ModPath%@MfHealAbort;%ModPath%@VET_Unflipping;%ModPath%@ace_nouniformrestrictions;%ModPath%@AdvancedRappelling;%ModPath%@AdvancedUrbanRappelling
+set KPLib=-mod=%ModPath%@ace;%ModPath%@CBA_A3;%ModPath%@RHSAFRF;%ModPath%@RHSGREF;%ModPath%@RHSUSAF;%ModPath%@AWR;%ModPath%@RealEngine;%ModPath%@EnhancedMovement;%ModPath%@EnhancedMovementRework;%ModPath%@MfHealAbort;%ModPath%@VET_Unflipping;%ModPath%@ace_nouniformrestrictions;%ModPath%@AdvancedRappelling;%ModPath%@AdvancedUrbanRappelling
 if %Status%==ENABLED goto KPLibExtended
 %A5% -port=2100 "%KPLib%"
 GOTO End
@@ -200,7 +200,7 @@ GOTO End
 GOTO End
 
 :SpecOps
-set SpecOps =-mod=%ModPath%@ace;%ModPath%@CBA_A3;%ModPath%@RHSAFRF;%ModPath%@RHSGREF;%ModPath%@RHSUSAF;%ModPath%@AWR;%ModPath%@RealEngine;%ModPath%@EnhancedMovement;%ModPath%@EnhancedMovementRework;%ModPath%@MfHealAbort;%ModPath%@VET_Unflipping;%ModPath%@ace_nouniformrestrictions;%ModPath%@AdvancedRappelling;%ModPath%@AdvancedUrbanRappelling;%ModPath%SpecialOps/@Albasrah;%ModPath%SpecialOps\@BettIR;%ModPath%SpecialOps\@BlastcoreMurrEdited;%ModPath%SpecialOps\@Iraqi-SyrianStyleCivilians;%ModPath%SpecialOps\@Islamic State[RHS];%ModPath%SpecialOps\@Jbad;%ModPath%SpecialOps\@PMCVehiclesMod;%ModPath%SpecialOps\@PMCAUniforms;%ModPath%SpecialOps\@ProjectBJC-PMCUniforms;%ModPath%SpecialOps\@TierOneWeapons;%ModPath%SpecialOps\@ZeusEnhanced;%ModPath%SpecialOps\@TierOneWeapons-BettIRCompatibilityConfig;%ModPath%SpecialOps\@Mavic3dropmod;%ModPath%SpecialOps\@Mavic3;%ModPath%SpecialOps\@ACE3ArsenalCore;%ModPath%SpecialOps\@RDSCivilianPack;%ModPath%SpecialOps\@ZeusEnhancedACE3Compatibility
+set SpecOps=-mod=%ModPath%@ace;%ModPath%@CBA_A3;%ModPath%@RHSAFRF;%ModPath%@RHSGREF;%ModPath%@RHSUSAF;%ModPath%@AWR;%ModPath%@RealEngine;%ModPath%@EnhancedMovement;%ModPath%@EnhancedMovementRework;%ModPath%@MfHealAbort;%ModPath%@VET_Unflipping;%ModPath%@ace_nouniformrestrictions;%ModPath%@AdvancedRappelling;%ModPath%@AdvancedUrbanRappelling;%ModPath%SpecialOps/@Albasrah;%ModPath%SpecialOps\@BettIR;%ModPath%SpecialOps\@BlastcoreMurrEdited;%ModPath%SpecialOps\@Iraqi-SyrianStyleCivilians;%ModPath%SpecialOps\@Islamic State[RHS];%ModPath%SpecialOps\@Jbad;%ModPath%SpecialOps\@PMCVehiclesMod;%ModPath%SpecialOps\@PMCAUniforms;%ModPath%SpecialOps\@ProjectBJC-PMCUniforms;%ModPath%SpecialOps\@TierOneWeapons;%ModPath%SpecialOps\@ZeusEnhanced;%ModPath%SpecialOps\@TierOneWeapons-BettIRCompatibilityConfig;%ModPath%SpecialOps\@Mavic3dropmod;%ModPath%SpecialOps\@Mavic3;%ModPath%SpecialOps\@ACE3ArsenalCore;%ModPath%SpecialOps\@RDSCivilianPack;%ModPath%SpecialOps\@ZeusEnhancedACE3Compatibility
 if %Status%==ENABLED goto SpecOpsExtended
 %A5% -port=20100 "%SpecOps%"
 GOTO End
